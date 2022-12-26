@@ -39,7 +39,7 @@ class Item extends BaseController
     {
         if ($this->request->isAJAX()) {
             $itemId = $this->request->getPost('itemId');
-            $unit = new Unit;
+            $unit = new Unit();
             $data['units'] = $unit->showUnit();
 
             if ($itemId == null) {
@@ -62,11 +62,10 @@ class Item extends BaseController
         if ($this->request->isAJAX()) {
             $data = $this->request->getPost();
 
-            $unit = new Unit;
+            $unit = new Unit();
             $isUnit = $unit->validateUnit($data['unit_id']);
 
             if (!$isUnit) {
-
                 $response = [
                     'error' => [
                         'unit' => 'Unit tidak ditemukan'
@@ -133,7 +132,6 @@ class Item extends BaseController
     public function showModalAddStock()
     {
         if ($this->request->isAJAX()) {
-
             $data['items'] = $this->ItemModel->showItem();
             $response['addStockModal'] = view('Item/Modals/addStock', $data);
             return json_encode($response);
@@ -290,7 +288,6 @@ class Item extends BaseController
         }
     }
 
-
     public function validateItem($itemId)
     {
         $item = $this->ItemModel->find($itemId);
@@ -316,5 +313,10 @@ class Item extends BaseController
         }
 
         return false;
+    }
+
+    public function showLog($status = null)
+    {
+        return $this->ItemModel->showLog($status);
     }
 }

@@ -123,7 +123,7 @@
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
-                <a class="menu-link " href="<?= base_url('dashboard'); ?>">
+                <a class="menu-link  <?= (uri_string() == 'laporan') ? 'active' : ''; ?>" href="<?= base_url('laporan'); ?>">
                     <span class="menu-icon">
                         <span class="svg-icon svg-icon-muted svg-icon-2hx"><svg width="24" height="24" viewBox="-3 -3 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.3" d="M8.9 21L7.19999 22.6999C6.79999 23.0999 6.2 23.0999 5.8 22.6999L4.1 21H8.9ZM4 16.0999L2.3 17.8C1.9 18.2 1.9 18.7999 2.3 19.1999L4 20.9V16.0999ZM19.3 9.1999L15.8 5.6999C15.4 5.2999 14.8 5.2999 14.4 5.6999L9 11.0999V21L19.3 10.6999C19.7 10.2999 19.7 9.5999 19.3 9.1999Z" fill="currentColor" />
@@ -131,7 +131,7 @@
                             </svg>
                         </span>
                     </span>
-                    <span class="menu-title">Reports</span>
+                    <span class="menu-title">Laporan</span>
                 </a>
                 <!--end:Menu link-->
             </div>

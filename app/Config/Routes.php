@@ -56,6 +56,8 @@ $routes->post('/stock/current', 'Item::showCurrentStock');
 $routes->post('/stock/add', 'Item::addStock');
 $routes->post('/stock/minus', 'Item::minusStock');
 
+$routes->get('/laporan', 'Report::index');
+$routes->post('/laporan/table', 'Report::showTable');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

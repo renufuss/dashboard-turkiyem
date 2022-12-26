@@ -61,4 +61,20 @@ class ItemModel extends Model
 
         return true;
     }
+
+    public function showLog($status = null)
+    {
+        $table = $this->db->table('item_transactions');
+        $query = $table->select('items.name as itemName, users.*, item_transactions.stock as logStock, item_transactions.status as logStatus, item_transactions.created_at as logDate')
+            ->join('items', 'item_transactions.item_id=items.item_id')
+            ->join('users', 'item_transactions.user_id=users.user_id')
+            ->orderBy('logDate', 'DESC');
+
+        if ($status != null) {
+            $query->where('status', $status);
+        }
+        $data = $query->get()->getResultObject();
+
+        return $data;
+    }
 }

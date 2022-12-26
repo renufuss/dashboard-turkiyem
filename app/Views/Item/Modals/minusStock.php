@@ -138,8 +138,6 @@
 
     $('#minusStockModal').on('hidden.bs.modal', function() {
         $('.modalStock').html('');
-        setTimeout(function() {
-            location.reload();
-        }, 1200);
+        location.reload();
     })
 </script>
