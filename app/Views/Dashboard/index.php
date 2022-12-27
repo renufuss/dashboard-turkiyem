@@ -45,7 +45,7 @@
             <div class="card-body pt-2 pb-4 d-flex align-items-center">
                 <!--begin::Labels-->
                 <div class="d-flex flex-column content-justify-center w-100">
-                    <a class="btn btn-success" href="">Lihat Selengkapnya</a>
+                    <a class="btn btn-success" href="<?= base_url('laporan'); ?>">Lihat Selengkapnya</a>
                 </div>
                 <!--end::Labels-->
             </div>
@@ -76,7 +76,7 @@
             <div class="card-body pt-2 pb-4 d-flex align-items-center">
                 <!--begin::Labels-->
                 <div class="d-flex flex-column content-justify-center w-100">
-                    <a class="btn btn-warning" href="">Lihat Selengkapnya</a>
+                    <a class="btn btn-warning" href="<?= base_url('barang'); ?>">Lihat Selengkapnya</a>
                 </div>
                 <!--end::Labels-->
             </div>
@@ -126,7 +126,7 @@
             <div class="card-body pt-2 pb-4 d-flex align-items-center">
                 <!--begin::Labels-->
                 <div class="d-flex flex-column content-justify-center w-100">
-                    <a class="btn btn-danger" href="">Lihat Selengkapnya</a>
+                    <a class="btn btn-danger" href="<?= base_url('laporan'); ?>">Lihat Selengkapnya</a>
                 </div>
                 <!--end::Labels-->
             </div>
@@ -153,7 +153,7 @@
             <div class="card-body pt-2 pb-4 d-flex align-items-center">
                 <!--begin::Labels-->
                 <div class="d-flex flex-column content-justify-center w-100">
-                    <a class="btn btn-primary" href="">Lihat Selengkapnya</a>
+                    <a class="btn btn-primary" href="<?= base_url('pengguna'); ?>">Lihat Selengkapnya</a>
                 </div>
                 <!--end::Labels-->
             </div>
