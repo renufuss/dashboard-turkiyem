@@ -33,10 +33,10 @@
             </div>
             <!-- end::Input group -->
             <div>
-                <button class="btn btn-sm btn-light-success m-3" id="btnAddUnit">
+                <button class="btn btn-sm btn-light-success m-3" type="button" class="btn btn-success btn-sm"
+                    data-bs-toggle="modal" data-bs-target="#exportModal">
                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-                    <span class="svg-icon svg-icon-2">
-                    </span>
+                    <span class="svg-icon svg-icon-2"></span>
                     <!--end::Svg Icon-->Export to Excel
                 </button>
             </div>
@@ -52,6 +52,8 @@
     <!--end::Card Body-->
 </div>
 <!--end::Card-->
+<!-- Modal Export -->
+<?php include('Modals/exportExcel.php'); ?>
 
 <script>
     function showTable() {
@@ -80,6 +82,7 @@
             },
         });
     }
+
 
     $(document).ready(function () {
         showTable();

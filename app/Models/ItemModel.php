@@ -52,7 +52,7 @@ class ItemModel extends Model
     {
         $table = $this->db->table($this->table);
         $query = $table->select('item_id, items.name as itemName, units.name as unitName, stock')
-            ->join('units', 'items.unit_id=units.unit_id')
+            ->join('units', 'items.unit_id=units.unit_id', 'left')
             ->orderBy('items.name', 'ASC')
             ->where('items.deleted_at', null);
         $data = $query->get()->getResultObject();
@@ -68,7 +68,7 @@ class ItemModel extends Model
         return true;
     }
 
-    public function showLog($status = null)
+    public function showLog($condition = [])
     {
         $table = $this->db->table('item_transactions');
         $query = $table->select('items.name as itemName, users.*, item_transactions.stock as logStock, item_transactions.status as logStatus, item_transactions.created_at as logDate, item_transactions.description as description')
@@ -76,9 +76,15 @@ class ItemModel extends Model
             ->join('users', 'item_transactions.user_id=users.user_id')
             ->orderBy('logDate', 'DESC');
 
-        if ($status != null) {
-            $query->where('status', $status);
+        if ($condition['status'] != null) {
+            $query->where('status', $condition['status']);
         }
+        $isExport = ($condition['startDate'] != null && $condition['endDate'] != null);
+        if ($isExport) {
+            $query->where('DATE(item_transactions.created_at) >=', date('Y-m-d', strtotime($condition['startDate'])));
+            $query->where('DATE(item_transactions.created_at) <=', date('Y-m-d', strtotime($condition['endDate'])));
+        }
+
         $data = $query->get()->getResultObject();
 
         return $data;

@@ -329,9 +329,9 @@ class Item extends BaseController
         return false;
     }
 
-    public function showLog($status = null)
+    public function showLog($condition = [])
     {
-        return $this->ItemModel->showLog($status);
+        return $this->ItemModel->showLog($condition);
     }
 
     public function countLog($status)

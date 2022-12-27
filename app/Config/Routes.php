@@ -59,6 +59,7 @@ $routes->post('/stock/minus', 'Item::minusStock');
 
 $routes->get('/laporan', 'Report::index');
 $routes->post('/laporan/table', 'Report::showTable');
+$routes->post('/laporan/export', 'Report::exportToExcel');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
