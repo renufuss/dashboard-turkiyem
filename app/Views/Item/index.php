@@ -193,6 +193,11 @@
         });
     }
 
+    function clearModal(){
+        $('#unit').val('a');
+        $('#name').val('');
+        $('#alert').val('');
+    }
 
     function saveItem() {
         $.ajax({
@@ -202,6 +207,7 @@
                 item_id: $('#item_id').val(),
                 unit_id: $('#unit').val(),
                 name: $('#name').val(),
+                alert: $('#alert').val(),
             },
             dataType: "json",
             beforeSend: function() {
@@ -235,8 +241,15 @@
                 }
 
                 if (response.success) {
+                    clearModal();
                     toastr.success(response.success, "Sukses");
                     showTable();
+
+                    if(response.edit){
+                        setTimeout(function(){
+                            location.reload();
+                        }, 500);
+                    }
                 }
 
                 $("#btnSimpan").html(`Simpan`);

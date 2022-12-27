@@ -12,19 +12,20 @@ class ItemModel extends Model
     protected $useAutoIncrement = true;
 
     protected $returnType     = 'object';
-    protected $useSoftDeletes = false;
+    protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['unit_id', 'name', 'stock'];
+    protected $allowedFields = ['unit_id', 'name', 'stock', 'alert'];
 
-    protected $useTimestamps = false;
+    protected $useTimestamps = true;
     protected $createdField  = null;
     protected $updatedField  = null;
-    protected $deletedField  = null;
+    protected $deletedField  = 'deleted_at';
 
     protected $validationRules    = [
         'name' => 'required|alpha_numeric_space|is_unique[items.name,item_id,{item_id}]',
         'unit_id' => 'required',
         'stock' => 'required|numeric',
+        'alert' => 'required|numeric'
     ];
     protected $validationMessages = [
         'name' => [
@@ -38,7 +39,11 @@ class ItemModel extends Model
         'stock' => [
             'required' => 'Stok tidak boleh kosong',
             'numeric' => 'Stok hanya boleh dalam bentuk angka'
-        ]
+        ],
+        'alert' => [
+            'required' => 'Stok tidak boleh kosong',
+            'numeric' => 'Alert hanya boleh dalam bentuk angka'
+        ],
     ];
     protected $skipValidation     = true;
 
@@ -48,7 +53,8 @@ class ItemModel extends Model
         $table = $this->db->table($this->table);
         $query = $table->select('item_id, items.name as itemName, units.name as unitName, stock')
             ->join('units', 'items.unit_id=units.unit_id')
-            ->orderBy('items.name', 'ASC');
+            ->orderBy('items.name', 'ASC')
+            ->where('items.deleted_at', null);
         $data = $query->get()->getResultObject();
 
         return $data;
@@ -65,7 +71,7 @@ class ItemModel extends Model
     public function showLog($status = null)
     {
         $table = $this->db->table('item_transactions');
-        $query = $table->select('items.name as itemName, users.*, item_transactions.stock as logStock, item_transactions.status as logStatus, item_transactions.created_at as logDate')
+        $query = $table->select('items.name as itemName, users.*, item_transactions.stock as logStock, item_transactions.status as logStatus, item_transactions.created_at as logDate, item_transactions.description as description')
             ->join('items', 'item_transactions.item_id=items.item_id')
             ->join('users', 'item_transactions.user_id=users.user_id')
             ->orderBy('logDate', 'DESC');
@@ -75,6 +81,14 @@ class ItemModel extends Model
         }
         $data = $query->get()->getResultObject();
 
+        return $data;
+    }
+
+    public function countLog($status)
+    {
+        $table = $this->db->table('item_transactions');
+        $query = $table->select('count(*) as itemCount')->where('status', $status);
+        $data = $query->get()->getFirstRow()->itemCount;
         return $data;
     }
 }

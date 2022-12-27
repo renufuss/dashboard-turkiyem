@@ -61,7 +61,6 @@ class Item extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = $this->request->getPost();
-
             $unit = new Unit();
             $isUnit = $unit->validateUnit($data['unit_id']);
 
@@ -90,8 +89,11 @@ class Item extends BaseController
             $response['success'] = 'Berhasil menyimpan barang';
             $data['name'] = ucwords(strtolower($this->request->getPost('name')));
 
-            $this->ItemModel->save($data);
+            if ($this->request->getPost('item_id') != null) {
+                $response ['edit'] = true;
+            }
 
+            $this->ItemModel->save($data);
             return json_encode($response);
         }
     }
@@ -192,6 +194,16 @@ class Item extends BaseController
                 return json_encode($response);
             }
 
+            if ($data['description'] == null) {
+                $response = [
+                    'error' => [
+                        'description' => 'Description tidak boleh kosong'
+                    ],
+                    'errorMsg' => 'Gagal menyimpan stok',
+                ];
+
+                return json_encode($response);
+            }
 
             // Tambah Stock
             $item = $this->ItemModel->find($data['item_id']);
@@ -208,6 +220,7 @@ class Item extends BaseController
                 'item_id' => $item->item_id,
                 'stock' => $data['stock'],
                 'status' => 1,
+                'description' => $data['description'],
                 'created_at' => date('Y-m-d H:i:s')
             ];
             $this->ItemModel->InsertLog($itemData);
@@ -279,6 +292,7 @@ class Item extends BaseController
                 'item_id' => $item->item_id,
                 'stock' => $data['stock'],
                 'status' => 2,
+                'description' => $data['description'],
                 'created_at' => date('Y-m-d H:i:s')
             ];
             $this->ItemModel->InsertLog($itemData);
@@ -301,7 +315,7 @@ class Item extends BaseController
 
     public function validateInputStock($data)
     {
-        $isValid = $this->validateData($data, $this->ItemModel->getValidationRules(['except' => ['name', 'unit_id']]), $this->ItemModel->getValidationMessages());
+        $isValid = $this->validateData($data, $this->ItemModel->getValidationRules(['except' => ['name', 'unit_id', 'alert']]), $this->ItemModel->getValidationMessages());
 
         if (!$isValid) {
             $response = [
@@ -318,5 +332,15 @@ class Item extends BaseController
     public function showLog($status = null)
     {
         return $this->ItemModel->showLog($status);
+    }
+
+    public function countLog($status)
+    {
+        return $this->ItemModel->countLog($status);
+    }
+
+    public function totalItem()
+    {
+        return $this->ItemModel->countAllResults();
     }
 }

@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="addItemModalLabel">Tambah Item</h5>
+                <h5 class="modal-title" id="addItemModalLabel">Tambah Barang</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
@@ -12,10 +12,10 @@
                 <div class="col-md-12 fv-row">
                     <!--begin::Label-->
                     <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
-                        <span class="required">Nama Item</span>
+                        <span class="required">Nama Barang</span>
                     </label>
                     <!--end::Label-->
-                    <input type="text" class="form-control form-control-solid" name="name" id="name" autocomplete="off" />
+                    <input type="text" class="form-control form-control-solid mb-2" name="name" id="name" autocomplete="off" />
                     <div class="invalid-feedback" id="name-feedback"></div>
                 </div>
                 <!-- end::col -->
@@ -32,6 +32,18 @@
                     <div class="invalid-feedback" id="unit-feedback"></div>
                 </div>
                 <!-- end::Input group -->
+
+                <!-- begin::col -->
+                <div class="col-md-12 fv-row mb-8">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span class="required">Batas Alert</span>
+                    </label>
+                    <!--end::Label-->
+                    <input type="number" class="form-control form-control-solid" name="alert" id="alert" autocomplete="off" />
+                    <div class="invalid-feedback" id="alert-feedback"></div>
+                </div>
+                <!-- end::col -->
             </div>
             <!-- end modalbody -->
             <div class="modal-footer">

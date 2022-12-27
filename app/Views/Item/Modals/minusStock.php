@@ -33,6 +33,18 @@
                 </div>
                 <!-- end::col -->
 
+                 <!-- begin::col -->
+                 <div class="col-md-12 fv-row">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span class="required">Keterangan</span>
+                    </label>
+                    <!--end::Label-->
+                    <input type="text" class="form-control form-control-solid mb-2" name="description" id="description" autocomplete="off" />
+                    <div class="invalid-feedback" id="description-feedback"></div>
+                </div>
+                <!-- end::col -->
+
                 <span>Jumlah stok saat ini : <span id="currentStock"></span></span>
             </div>
             <!-- end modalbody -->
@@ -84,6 +96,7 @@
             data: {
                 item_id: $('#item').val(),
                 stock: $('#stock').val(),
+                description: $('#description').val(),
             },
             dataType: "json",
             beforeSend: function() {

@@ -33,6 +33,18 @@
                     <div class="invalid-feedback" id="unit-feedback"></div>
                 </div>
                 <!-- end::Input group -->
+
+                  <!-- begin::col -->
+                  <div class="col-md-12 fv-row mb-8">
+                    <!--begin::Label-->
+                    <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
+                        <span class="required">Batas Alert</span>
+                    </label>
+                    <!--end::Label-->
+                    <input type="number" class="form-control form-control-solid" name="alert" id="alert" value="<?= $item->alert; ?>" autocomplete="off" />
+                    <div class="invalid-feedback" id="alert-feedback"></div>
+                </div>
+                <!-- end::col -->
             </div>
             <!-- end modalbody -->
             <div class="modal-footer">

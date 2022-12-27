@@ -26,9 +26,9 @@
             <div class="d-flex m-3">
                 <select class="form-select form-select-solid" style="cursor: pointer;" name="status" id="status"
                     data-control="select2" data-hide-search="true">
-                    <option value="">Semua</option>
-                    <option value="1">Plus</option>
-                    <option value="2">Minus</option>
+                    <option value="">Semua Status</option>
+                    <option value="1">Barang Masuk</option>
+                    <option value="2">Barang Keluar</option>
                 </select>
             </div>
             <!-- end::Input group -->
