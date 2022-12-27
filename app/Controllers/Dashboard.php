@@ -17,4 +17,18 @@ class Dashboard extends BaseController
         ];
         return view('Dashboard/index', $data);
     }
+
+    public function showTable()
+    {
+        if ($this->request->isAJAX()) {
+            $item = new Item();
+            $data = [
+                'items' => $item->showItem(),
+            ];
+            $response = [
+                'tableItem' => view('Dashboard/Tables/tableItem', $data),
+            ];
+            return json_encode($response);
+        }
+    }
 }

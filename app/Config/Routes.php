@@ -37,6 +37,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->addRedirect('/', 'dashboard');
 $routes->get('/dashboard', 'Dashboard::index');
+$routes->post('/dashboard/table', 'Dashboard::showTable');
+
+
 $routes->get('/satuan', 'Unit::index');
 $routes->post('/satuan/table', 'Unit::showTable');
 $routes->post('/satuan/modal', 'Unit::showModal');

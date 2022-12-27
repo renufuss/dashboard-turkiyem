@@ -178,21 +178,7 @@
             <!--end::Header-->
             <!--begin::Card body-->
             <div class="card-body d-flex justify-content-between flex-column">
-                <table class="table align-middle gs-0 gy-4" id="itemDataTable">
-                    <!--begin::Table head-->
-                    <thead>
-                        <tr class="fw-bold text-muted bg-light">
-                            <th class="rounded-start rounded-start ps-4">Nama</th>
-                            <th class="text-center">Stok</th>
-                            <th class="text-center rounded-end">Satuan</th>
-                        </tr>
-                    </thead>
-                    <!--end::Table head-->
-                    <!--begin::Table body-->
-                    <tbody>
-                    </tbody>
-                    <!--end::Table body-->
-                </table>
+                <div class="tableItem"></div>
             </div>
             <!--end::Card body-->
         </div>
@@ -201,4 +187,36 @@
     <!--end::Col-->
 </div>
 <!--end::Row-->
+
+<script>
+    function showTable() {
+        $.ajax({
+            type: "post",
+            url: "/dashboard/table",
+            data: "",
+            dataType: "json",
+            beforeSend: function() {
+                $(".tableItem").html(`
+                <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+	                <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+	                <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+	                <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+	                <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#000" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+                </svg>
+                `);
+            },
+            success: function(response) {
+                $('.tableItem').html(response.tableItem);
+            },
+            error: function(xhr, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            },
+        });
+    }
+
+    $(document).ready(function() {
+        showTable();
+    });
+</script>
+
 <?= $this->endSection(); ?>

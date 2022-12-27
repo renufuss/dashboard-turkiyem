@@ -343,4 +343,9 @@ class Item extends BaseController
     {
         return $this->ItemModel->countAllResults();
     }
+
+    public function showItem()
+    {
+        return $this->ItemModel->showItem();
+    }
 }

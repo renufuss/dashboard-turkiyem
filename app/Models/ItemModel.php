@@ -51,7 +51,7 @@ class ItemModel extends Model
     public function showItem()
     {
         $table = $this->db->table($this->table);
-        $query = $table->select('item_id, items.name as itemName, units.name as unitName, stock')
+        $query = $table->select('item_id, items.name as itemName, units.name as unitName, stock, alert')
             ->join('units', 'items.unit_id=units.unit_id', 'left')
             ->orderBy('items.name', 'ASC')
             ->where('items.deleted_at', null);
