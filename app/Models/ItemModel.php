@@ -73,7 +73,7 @@ class ItemModel extends Model
         $table = $this->db->table('item_transactions');
         $query = $table->select('items.name as itemName, users.*, item_transactions.stock as logStock, item_transactions.status as logStatus, item_transactions.created_at as logDate, item_transactions.description as description')
             ->join('items', 'item_transactions.item_id=items.item_id')
-            ->join('users', 'item_transactions.user_id=users.user_id')
+            ->join('users', 'item_transactions.user_id=users.id')
             ->orderBy('logDate', 'DESC');
 
         if ($condition['status'] != null) {

@@ -215,8 +215,7 @@ class Item extends BaseController
 
             // Add To Log
             $itemData = [
-                // 'user_id' => user()->id,
-                'user_id' => 1,
+                'user_id' => user()->id,
                 'item_id' => $item->item_id,
                 'stock' => $data['stock'],
                 'status' => 1,
@@ -287,8 +286,7 @@ class Item extends BaseController
 
             // Add To Log
             $itemData = [
-                // 'user_id' => user()->id,
-                'user_id' => 1,
+                'user_id' => user()->id,
                 'item_id' => $item->item_id,
                 'stock' => $data['stock'],
                 'status' => 2,

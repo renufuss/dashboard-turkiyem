@@ -63,6 +63,15 @@ $routes->post('/stock/minus', 'Item::minusStock');
 $routes->get('/laporan', 'Report::index');
 $routes->post('/laporan/table', 'Report::showTable');
 $routes->post('/laporan/export', 'Report::exportToExcel');
+
+$routes->get('/pengguna', 'User::index');
+$routes->post('/pengguna/table', 'User::showTable');
+$routes->post('/pengguna/save', 'User::save');
+$routes->post('/pengguna/confirm', 'User::confirmDelete');
+$routes->post('/pengguna/delete', 'User::deleteUser');
+
+$routes->get('/profile', 'User::myProfile');
+$routes->get('/profile/setting', 'User::setMyProfile');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -8,6 +8,8 @@ use CodeIgniter\Validation\FileRules;
 use CodeIgniter\Validation\FormatRules;
 use CodeIgniter\Validation\Rules;
 
+\Myth\Auth\Authentication\Passwords\ValidationRules::class;
+
 class Validation extends BaseConfig
 {
     // --------------------------------------------------------------------
