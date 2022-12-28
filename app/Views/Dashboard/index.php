@@ -140,7 +140,7 @@
                 <!--begin::Title-->
                 <div class="card-title d-flex flex-column">
                     <!--begin::Amount-->
-                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">6.3k</span>
+                    <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2"><?= $totalUser; ?></span>
                     <!--end::Amount-->
                     <!--begin::Subtitle-->
                     <span class="text-gray-400 pt-1 fw-semibold fs-6">Pengguna</span>

@@ -7,6 +7,7 @@ class Dashboard extends BaseController
     public function index()
     {
         $item = new Item();
+        $user = new User();
         $data = [
             'title' => 'Dashboard',
             'heading' => 'Dashboard',
@@ -14,6 +15,7 @@ class Dashboard extends BaseController
             'totalIn' =>  $item->countLog(1),
             'totalOut' => $item->countLog(2),
             'totalItem' => $item->totalItem(),
+            'totalUser' => $user->totalUser(),
         ];
         return view('Dashboard/index', $data);
     }

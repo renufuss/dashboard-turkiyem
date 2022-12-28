@@ -170,44 +170,71 @@
         <!--end::Theme mode-->
         <!--begin::User menu-->
         <div class="app-navbar-item ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
-            <!--begin::Menu wrapper-->
-            <div class="cursor-pointer symbol symbol-35px symbol-md-40px" data-kt-menu-trigger="click"
-                data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                <img src="<?= base_url(); ?>/assets/media/avatars/avatar.svg" alt="user" />
-            </div>
-            <!--begin::User account menu-->
-            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
-                data-kt-menu="true">
-                <!--begin::Menu item-->
-                <div class="menu-item px-3">
-                    <div class="menu-content d-flex align-items-center px-3">
-                        <!--begin::Avatar-->
-                        <div class="symbol symbol-50px me-5">
-                            <img alt="Logo" src="<?= base_url(); ?>/assets/media/avatars/avatar.svg" />
-                        </div>
-                        <!--end::Avatar-->
-                        <!--begin::Username-->
-                        <div class="d-flex flex-column">
-                            <div class="fw-bold d-flex align-items-center fs-5">Data Warehouse
-                                <span class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Kelompok 2</span></div>
-                            <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">kelompok2@upnjatim.com</a>
-                        </div>
-                        <!--end::Username-->
-                    </div>
-                </div>
-                <!--end::Menu item-->
-                <!--begin::Menu separator-->
-                <div class="separator my-2"></div>
-                <!--end::Menu separator-->
-
-                <!--begin::Menu item-->
-                <div class="menu-item px-5">
-                    <a href="../../demo1/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign
-                        Out</a>
-                </div>
-                <!--end::Menu item-->
-            </div>
-            <!--end::User account menu-->
+           <!--begin::Menu wrapper-->
+			<div class="cursor-pointer symbol symbol-35px symbol-md-40px" data-kt-menu-trigger="click"
+				data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+				<?php if(user()->image_profile != null) : ?>
+				<img src="<?= base_url(); ?>/assets/images/users/<?= user()->image_profile; ?>" class="" alt="" />
+				<?php else : ?>
+				<div class="symbol symbol-50px">
+					<div class="symbol-label fs-4 fw-semibold bg-<?= user()->getRole()['badge']; ?> text-inverse-danger">
+						<?= strtoupper(substr(user()->first_name, 0, 1)); ?><?= strtoupper(substr(user()->last_name, 0, 1)); ?>
+					</div>
+				</div>
+				<?php endif; ?>
+			</div>
+           <!--begin::User account menu-->
+			<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
+				data-kt-menu="true">
+				<!--begin::Menu item-->
+				<div class="menu-item px-3">
+					<div class="menu-content d-flex align-items-center px-3">
+						<!--begin::Avatar-->
+						<div class="symbol symbol-50px me-5">
+							<?php if(user()->image_profile != null) : ?>
+							<img src="<?= base_url(); ?>/assets/images/users/<?= user()->image_profile; ?>" class="" alt="Logo" />
+							<?php else : ?>
+							<div class="symbol symbol-50px">
+								<div class="symbol-label fs-2 fw-semibold bg-<?= user()->getRole()['badge']; ?> text-inverse-danger">
+									<?= strtoupper(substr(user()->first_name, 0, 1)); ?><?= strtoupper(substr(user()->last_name, 0, 1)); ?>
+								</div>
+							</div>
+							<?php endif; ?>
+						</div>
+						<!--end::Avatar-->
+						<!--begin::Username-->
+						<div class="d-flex flex-column">
+							<div class="fw-bold d-flex align-items-center fs-7"><?= ucwords(strtolower(user()->first_name)); ?> <?= ucwords(strtolower(user()->last_name)); ?>
+								<span class="badge badge-light-<?= user()->getRole()['badge']; ?> fw-bold fs-8 px-2 py-1 ms-2"><?= ucwords(strtolower(user()->getRole()['name'])); ?></span></div>
+							<a href="#" class="fw-semibold text-muted text-hover-primary fs-8"><?= ucwords(strtolower(user()->email)); ?></a>
+						</div>
+						<!--end::Username-->
+					</div>
+				</div>
+				<!--end::Menu item-->
+				<!--begin::Menu separator-->
+				<div class="separator my-2"></div>
+				<!--end::Menu separator-->
+				<!--begin::Menu item-->
+				<div class="menu-item px-5">
+					<a href="<?= base_url(); ?>/profile" class="menu-link px-5">Akun Saya</a>
+				</div>
+				<!--end::Menu item-->
+				<!--begin::Menu item-->
+				<div class="menu-item px-5 my-1">
+					<a href="<?= base_url(); ?>/profile/setting" class="menu-link px-5">Pengaturan Akun</a>
+				</div>
+				<!--end::Menu item-->
+				<!--begin::Menu separator-->
+				<div class="separator my-2"></div>
+				<!--end::Menu separator-->
+				<!--begin::Menu item-->
+				<div class="menu-item px-5">
+					<a class="menu-link px-5" href="<?= base_url('logout'); ?>">Keluar</a>
+				</div>
+				<!--end::Menu item-->
+			</div>
+			<!--end::User account menu-->
             <!--end::Menu wrapper-->
         </div>
         <!--end::User menu-->

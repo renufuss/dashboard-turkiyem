@@ -134,4 +134,9 @@ class User extends BaseController
 
         return view('MyProfile/Setting/index', $data);
     }
+
+    public function totalUser()
+    {
+        return $this->UserModel->countAllResults();
+    }
 }

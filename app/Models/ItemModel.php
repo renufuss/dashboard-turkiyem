@@ -77,7 +77,7 @@ class ItemModel extends Model
             ->orderBy('logDate', 'DESC');
 
         if ($condition['status'] != null) {
-            $query->where('status', $condition['status']);
+            $query->where('item_transactions.status', $condition['status']);
         }
         $isExport = ($condition['startDate'] != null && $condition['endDate'] != null);
         if ($isExport) {
