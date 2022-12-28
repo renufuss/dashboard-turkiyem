@@ -32,6 +32,7 @@
                 </select>
             </div>
             <!-- end::Input group -->
+            <?php if(in_groups('Super Admin') || in_groups('Gudang')) : ?>
             <div>
                 <button class="btn btn-sm btn-light-success m-3" type="button" class="btn btn-success btn-sm"
                     data-bs-toggle="modal" data-bs-target="#exportModal">
@@ -40,6 +41,7 @@
                     <!--end::Svg Icon-->Export to Excel
                 </button>
             </div>
+            <?php endif; ?>
         </div>
     </div>
     <!--end::Card Header-->

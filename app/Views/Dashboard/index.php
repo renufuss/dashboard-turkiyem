@@ -149,6 +149,7 @@
                 <!--end::Title-->
             </div>
             <!--end::Header-->
+            <?php if(in_groups('Super Admin')) : ?>
             <!--begin::Card body-->
             <div class="card-body pt-2 pb-4 d-flex align-items-center">
                 <!--begin::Labels-->
@@ -158,6 +159,7 @@
                 <!--end::Labels-->
             </div>
             <!--end::Card body-->
+            <?php endif; ?>
         </div>
         <!--end::Card widget 7-->
     </div>

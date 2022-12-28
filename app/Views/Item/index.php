@@ -18,6 +18,7 @@
             <!--end::Svg Icon-->
             <input type="text" data-kt-docs-table-filter="search" class="form-control form-control-solid w-250px ps-15" placeholder="Cari Satuan" id="search">
         </div>
+        <?php if(in_groups('Super Admin') || in_groups('Gudang')) : ?>
         <div class="card-toolbar">
             <!-- begin::Tambah Item -->
             <button class="btn btn-sm btn-light-primary m-3" id="btnAddItem">
@@ -32,6 +33,7 @@
             </button>
             <!-- end::Tambah Item -->
         </div>
+        <?php endif; ?>
     </div>
     <!--end::Card Header-->
     <!--begin::Card Body-->

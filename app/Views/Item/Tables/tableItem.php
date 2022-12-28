@@ -9,7 +9,9 @@
             <th class="rounded-start ps-4 min-w-200px">Nama</th>
             <th class="min-w-200px text-center">Stok</th>
             <th class="min-w-200px text-center">Satuan</th>
+            <?php if(in_groups('Super Admin') || in_groups('Gudang')) : ?>
             <th class="text-center rounded-end"></th>
+            <?php endif; ?>
         </tr>
     </thead>
     <!--end::Table head-->
@@ -20,6 +22,7 @@
                 <td class="ps-4"><?= $item->itemName; ?></td>
                 <td class="text-center"><?= $item->stock; ?></td>
                 <td class="text-center"><?= $item->unitName; ?></td>
+                <?php if(in_groups('Super Admin') || in_groups('Gudang')) : ?>
                 <td class="text-center">
                     <div class="d-flex justify-content-end flex-shrink-0">
                         <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" onclick="showModal('<?= $item->item_id; ?>')">
@@ -45,6 +48,7 @@
                         </button>
                     </div>
                 </td>
+                <?php endif; ?>
             </tr>
         <?php endforeach; ?>
     </tbody>

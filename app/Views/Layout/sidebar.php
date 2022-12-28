@@ -68,6 +68,7 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+                    <?php if(in_groups('Super Admin') || in_groups('Gudang')) : ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
@@ -80,6 +81,7 @@
                         </a>
                         <!--end:Menu link-->
                     </div>
+                    <?php endif; ?>
                 </div>
                 <!--end:Menu sub-->
             </div>
@@ -120,6 +122,7 @@
                 <!--end:Menu link-->
                 <!--begin:Menu sub-->
                 <div class="menu-sub menu-sub-accordion">
+                    <?php if(in_groups('Super Admin') || in_groups('Gudang')) : ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
@@ -132,6 +135,7 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
+                    <?php endif; ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
@@ -175,7 +179,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
-
+            <?php if(in_groups('Super Admin')) : ?>
             <!--begin:Menu item-->
             <div class="menu-item">
                 <!--begin:Menu link-->
@@ -200,6 +204,7 @@
                 <!--end:Menu link-->
             </div>
             <!--end:Menu item-->
+            <?php endif; ?>
 
             <!--begin:Menu item-->
             <div class="menu-item">
