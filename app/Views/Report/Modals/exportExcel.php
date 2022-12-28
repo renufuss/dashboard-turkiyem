@@ -32,7 +32,7 @@
                         </label>
                         <!--end::Label-->
                         <input type="date" class="form-control form-control-solid" name="endDate" id="endDate"
-                            autocomplete="off" />
+                            autocomplete="off" max="<?= date('Y-m-d'); ?>"/>
                         <div class="invalid-feedback" id="endDate-feedback"></div>
                     </div>
                     <!-- end::col -->

@@ -130,7 +130,9 @@
                 }
 
                 if (response.success) {
-                    $('#stock').val('0');
+                    $('#item').val('');
+                    $('#description').val('');
+                    $('#stock').val('');
                     showCurrentStock();
                     toastr.success(response.success, "Sukses");
                 }

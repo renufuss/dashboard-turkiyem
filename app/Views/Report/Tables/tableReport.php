@@ -38,16 +38,24 @@
 <!-- end :: End DataTable Js -->
 
 <script>
-    const table = $('#reportDataTable').DataTable({
-        "aaSorting": [],
-        "scrollX": true
-    });
+    function dataTable(){
+        const table = $('#reportDataTable').DataTable({
+            destroy: true,
+            "aaSorting": [],
+            "scrollX": true
+        });
+    
+        $('#search').on('keyup', function () {
+            table.search(this.value).draw();
+        });
+    }
 
-    $('#search').on('keyup', function () {
-        table.search(this.value).draw();
-    });
 
-    $('#status').on('change', function () {
-        showTable();
+    $(document).ready(function () {
+        dataTable();
+
+        $('#status').on('change', function () {
+            showTable();
+        });
     });
 </script>
