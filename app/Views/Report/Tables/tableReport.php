@@ -25,7 +25,7 @@
             <td class="ps-4" style="color: <?= ($isPlus) ? 'green' : 'red'; ?>;"><?= ($isPlus) ? '+' : '-'; ?>
                 <?= $log->logStock; ?></td>
             <td class="ps-4" style="word-break: break-all;">
-               <?= $log->description; ?></td>
+                <?= $log->description; ?></td>
             <td class="text-center"><?= $log->first_name; ?> <?= $log->last_name; ?></td>
         </tr>
         <?php endforeach; ?>
@@ -38,24 +38,19 @@
 <!-- end :: End DataTable Js -->
 
 <script>
-    function dataTable(){
+    $(document).ready(function () {
         const table = $('#reportDataTable').DataTable({
-            destroy: true,
             "aaSorting": [],
-            "scrollX": true
+            "scrollX": true,
+            destroy: true,
         });
     
         $('#search').on('keyup', function () {
             table.search(this.value).draw();
         });
-    }
+    });
 
-
-    $(document).ready(function () {
-        dataTable();
-
-        $('#status').on('change', function () {
-            showTable();
-        });
+    $('#status').on('change', function () {
+        showTable();
     });
 </script>
